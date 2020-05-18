@@ -1,11 +1,15 @@
-
 import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.Random;
 
-class Task11{
+class ArrayUtils{
     public static void main(String... args){
         System.out.println("Hello, I am working...");
+
+        System.out.println(isLeapYear(1800));
+        System.out.println(isLeapYear(2012));
+        System.out.println(isLeapYear(1600));
+        System.out.println(isLeapYear(396));
     }
 
 /*
@@ -14,15 +18,15 @@ task 1
 */
 
 /*
-public static void showArrays(char[] arr){
+public static void print(char[] array){
 for(char s:arr){
 System.out.print(s+", ");
 }
 }
 */
 
-    public static void showArrays(char[] charArr){
-        System.out.print(Arrays.toString(charArr));
+    public static void print(char[] array){
+        System.out.print(array);
     }
 /*
 task 2
@@ -34,12 +38,12 @@ task 2
 мы будем передвавать числа (десб шестн, восмир)
 */
 
-    public static char[] intToChar(int[] intArr){
-        char[] charArr = new char[intArr.length];
-        for (int i = 0; i <intArr.length ; i++) {
-            charArr[i] = (char) intArr[i];
+    public static char[] toCharArray(int[] array){
+        char[] chars = new char[array.length];
+        for (int i = 0; i <array.length ; i++) {
+            chars[i] = (char) array[i];
         }
-        return charArr;
+        return chars;
     }
 
 /*
@@ -49,7 +53,20 @@ task 3, task 4, task 5
 Приминает 5 интов, возвращает большее из них
 */
 
-    public static int findMaxInt(int... value){
+    public static int max(int a, int b){
+        return a>b?a:b;
+    }
+
+    public static int max(int a, int b, int c){
+        return max(max(a,b),c);
+    }
+
+    public static int max(int a, int b, int c, int d, int e){
+        return max(max(max(a,b),max(c,d)),e);
+    }
+
+
+    public static int max(int... value){
         return Arrays.stream(value).summaryStatistics().getMax();
     }
 
@@ -57,9 +74,9 @@ task 3, task 4, task 5
     task 6
     Принимает массив чаров, возвращает строку состоящую из символов массива
     */
-    public static String charToString(char[] charArr){
+    public static String toString(char[] array){
         String stingFromCharArrya = "";
-        for (char s:charArr ) {
+        for (char s:array ) {
             stingFromCharArrya +=s;
         }
         return stingFromCharArrya;
@@ -73,9 +90,9 @@ task 8
 возвращает -1
 */
 
-    public static int findFirstValue(int[] arr, int value){
-        for (int i=0; i<arr.length ;i++ ) {
-            if(arr[i]==value){
+    public static int indexOf(int[] arrya, int value){
+        for (int i=0; i<arrya.length ;i++ ) {
+            if(arrya[i]==value){
                 return i;
             }
         }
@@ -90,9 +107,9 @@ task 9
  возвращает -1
 */
 
-    public static int findLastValue(int[] arr, int value){
-        for (int i=arr.length-1; i>=0 ;i-- ) {
-            if(arr[i]==value){
+    public static int lastIndex(int[] array, int value){
+        for (int i=array.length-1; i>=0 ;i-- ) {
+            if(array[i]==value){
                 return i;
             }
         }
@@ -117,7 +134,14 @@ task 11
 */
 
     public static boolean isLeapYear(int year){
-        return year%4==0?true:false;
+        if(year<400 && year%4==0 && year%100!=0){
+            return true;
+        }
+        if(year%4==0 && (year%400==0 || year%100!=0)){
+            return true;
+        }
+        else{
+        return false;}
     }
 
 /*
@@ -126,8 +150,8 @@ task 12
 елементы массива которые кратны этому числу
 */
 
-    public static void showMultipleNumbers(int[] arr, int value){
-        Arrays.stream(arr)
+    public static void showMultipleNumbers(int[] arrya, int value){
+        Arrays.stream(arrya)
                 .filter(x->x%value==0)
                 .forEach(System.out::print);
     }
@@ -137,8 +161,8 @@ task 13
 Метод принимает массив интов сортирует его по возрастанию
 */
 
-    public static void sortIntArray(int[] arr){
-        Arrays.stream(arr).sorted().toArray();
+    public static void sort(int[] arrya){
+        Arrays.stream(arrya).sorted().toArray();
     }
 /*
 public static void quickSort(int[] source, int left, int right) {
@@ -220,11 +244,11 @@ task 17
 порядке
 */
 
-    public static void reverse(int[] arr){
-        for (int i=0;i<arr.length/2 ;i++ ) {
-            int tmp = arr[i];
-            arr[i] = arr[arr.length-1-i];
-            arr[arr.length-1-i] = tmp;
+    public static void reverse(int[] array){
+        for (int i=0;i<array.length/2 ;i++ ) {
+            int tmp = array[i];
+            array[i] = array[array.length-1-i];
+            array[array.length-1-i] = tmp;
         }
     }
 
@@ -264,14 +288,6 @@ task 19
         return false;
 
     }
-
-
-
-
-
-
-
-
 
 }
 
