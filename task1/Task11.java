@@ -5,11 +5,6 @@ import java.util.Random;
 class ArrayUtils{
     public static void main(String... args){
         System.out.println("Hello, I am working...");
-
-        System.out.println(isLeapYear(1800));
-        System.out.println(isLeapYear(2012));
-        System.out.println(isLeapYear(1600));
-        System.out.println(isLeapYear(396));
     }
 
 /*
